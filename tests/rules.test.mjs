@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import { test } from 'node:test';
+import { Run, judge } from '../src/rules.ts';
+
+test('관찰이 선행되고, 오답은 해당 판단으로 복귀하며, 최종 확인으로 완료한다', () => {
+  const run = new Run();
+  run.start();
+  run.openChoice();
+  assert.equal(run.phase, 'explore');
+  assert.equal(run.choose('restart'), null);
+  run.observe('coworker');
+  run.observe('panel');
+  run.openChoice();
+  assert.equal(run.choose('restart').correct, false);
+  assert.equal(run.phase, 'feedback');
+  run.retry();
+  assert.equal(run.phase, 'explore');
+  assert.equal(run.ready, false);
+  assert.equal(run.observations.has('panel'), true);
+  run.observe('coworker');
+  run.openChoice();
+  assert.equal(run.choose('hold-and-confirm').correct, true);
+  run.completeAction();
+  assert.equal(run.confirmFinal(false), false);
+  assert.equal(run.phase, 'final');
+  assert.equal(run.confirmFinal(true), true);
+  assert.equal(run.phase, 'done');
+  assert.deepEqual(run.attempts, ['restart', 'hold-and-confirm']);
+  assert.equal(judge('call-and-restart').correct, false);
+});

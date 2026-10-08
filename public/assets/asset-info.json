@@ -1,0 +1,24 @@
+{
+  "background": {
+    "width": 1672,
+    "height": 941,
+    "mode": "RGB"
+  },
+  "worker": {
+    "width": 2117,
+    "height": 743,
+    "mode": "RGBA",
+    "frameWidth": 529,
+    "bottoms": [
+      0.9676985195154778,
+      0.9663526244952894,
+      0.9663526244952894,
+      0.9650067294751009
+    ]
+  },
+  "coworker": {
+    "width": 1476,
+    "height": 1066,
+    "mode": "RGBA"
+  }
+}

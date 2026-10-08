@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111715" />
+    <title>SAFEPLAY · 재가동 전 최종 확인</title>
+  </head>
+  <body>
+    <main id="app">
+      <header class="app-header">
+        <a class="brand" href="/" aria-label="SAFEPLAY 처음으로">SAFE<span>PLAY</span><i></i></a>
+        <div class="header-caption">익숙한 현장에서, 판단을 연습하다</div>
+        <span class="test-badge"><i></i>가상 현장 테스트</span>
+      </header>
+      <section id="viewport" aria-label="산업현장 안전교육 게임">
+        <div id="game"></div>
+        <div class="scene-shade"></div>
+        <div class="mission-hud">
+          <div class="mission-eyebrow"><span class="mission-number">01</span> 컨베이어 점검 통로</div>
+          <h1>재가동 전 최종 확인</h1>
+          <p id="objective">현장을 둘러보고, 작업 상태를 확인하세요.</p>
+        </div>
+        <div class="progress-hud" aria-label="진행 상태"><span id="step-label">현장 진입</span><div id="step-dots"></div></div>
+        <div id="proximity" hidden><kbd>E</kbd><span></span></div>
+        <div id="world-caption" hidden role="status"></div>
+        <div id="intro" class="intro-card">
+          <p class="eyebrow">현장 훈련 / 01</p>
+          <h2>컨베이어를 다시<br>가동해도 될까요?</h2>
+          <p>재가동 요청이 들어왔습니다.<br>통로를 걸으며 주변을 확인하고 판단해 보세요.</p>
+          <button id="start" class="primary">현장 들어가기 <span>→</span></button>
+          <div class="intro-time">약 1~2분 · 키보드와 마우스</div>
+        </div>
+        <aside id="dialog" hidden aria-labelledby="dialog-title"></aside>
+        <div class="bottom-hud">
+          <div class="controls"><span><kbd>A</kbd><kbd>D</kbd> 이동</span><span><kbd>E</kbd> 조사</span><span><kbd>Esc</kbd> 닫기</span></div>
+          <div class="bottom-actions"><span id="observed-count">관찰 기록 0 / 2</span><button id="decide" class="decide-button" hidden>대응 결정 <span>→</span></button></div>
+        </div>
+        <div id="loading"><span class="loader"></span><p>현장을 준비하고 있습니다</p></div>
+      </section>
+      <footer class="app-footer"><span><i></i> 가상 시나리오 · 실제 현장 절차 검토 대기</span><span>피드백: 사전 작성 문구 <b>·</b> AI 미연동</span></footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
